@@ -1,0 +1,11 @@
+qemu-system-x86_64 \
+  -accel hvf \
+  -smp 2 \
+  -m 2G \
+  -device usb-tablet \
+  -usb \
+  -nographic \
+  -device virtio-net,netdev=vmnic \
+  -netdev user,id=vmnic,hostfwd=tcp:127.0.0.1:9001-:22 \
+  -drive file=debian11.qcow2,if=virtio \
+  -cdrom debian-11.5.0-amd64-netinst.iso
