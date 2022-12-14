@@ -36,7 +36,9 @@ startUbuntu() {
     -smp 2 \
     -cdrom "$CDROM" \
     -drive file="$DRIVE_FILE",if=virtio \
-    -cpu Nehalem
+    -cpu Nehalem \
+    -net nic \
+    -net user,hostfwd=tcp::2222-:22
 }
 
 main "$@"
