@@ -15,6 +15,9 @@ main() {
     "--ubuntu")
       startUbuntu
       ;;
+    "--ubuntu-desktop")
+      startUbuntuDesktop
+      ;;
     *)
       startUbuntu
       ;;
@@ -39,6 +42,19 @@ startUbuntu() {
     -cpu Nehalem \
     -net nic \
     -net user,hostfwd=tcp::2222-:22
+}
+
+startUbuntuDesktop() {
+  qemu-system-x86_64 \
+    -machine type=q35,accel=hvf \
+    -smp 2 \
+    -hda ubuntu-desktop-22.04.qcow2 \
+    -cdrom ./ubuntu-22.04.1-desktop-amd64.iso \
+    -m 4G \
+    -vga virtio \
+    -usb \
+    -device usb-tablet \
+    -display default,show-cursor=on
 }
 
 main "$@"
