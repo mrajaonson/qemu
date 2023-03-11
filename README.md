@@ -20,4 +20,7 @@ qemu-system-x86_64 --version
 
 # start VM
 ./start.sh
+
+# ssh
+ssh -p 2222 user@localhost
 ```
